@@ -1,0 +1,80 @@
+﻿<mahapps:MetroWindow x:Class="KontakteDatenbank.AddContactWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KontakteDatenbank"
+        xmlns:mahapps="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        mc:Ignorable="d"
+        Title="Neuer Kontakt hinzufügen" Height="450" Width="800"
+        Icon="Bilder\3d-fluency-user-location.png">
+
+
+        <Window.CommandBindings>
+                    <CommandBinding Command="Save" Executed="Cmd_Save_Executed" CanExecute="Cmd_Save_CanExecute"/>
+                    <CommandBinding Command="Close" Executed="Cmd_Close_Executed" />
+        </Window.CommandBindings>
+
+    <DockPanel>
+        
+            <StackPanel DockPanel.Dock="Bottom" HorizontalAlignment="Right" Orientation="Horizontal">
+                    <Button Content="Speichern" IsDefault="True" Command="Save"/>
+                    <Button Content="Abbrechen" Command="Close"/>
+            </StackPanel>
+
+        <Grid>
+            
+                    <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+            
+                    <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="FirstName:"/>
+            <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding SelectedContact.FirstName}"/>
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="LastName:"/>
+            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding SelectedContact.LastName}"/>
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Addres:"/>
+            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding SelectedContact.Addres}"/>
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="Email:"/>
+            <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding SelectedContact.Email}"/>
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Phone:"/>
+            <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding SelectedContact.Phone}"/>
+            <TextBlock Grid.Row="5" Grid.Column="0" Text="Age:"/>
+            <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding SelectedContact.Age}"/>
+            <TextBlock Grid.Row="6" Grid.Column="0" Text="Mantra:"/>
+            <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding SelectedContact.Mantra}"/>
+            <TextBlock Grid.Row="7" Grid.Column="0" Text="Id:"/>
+            <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding SelectedContact.Id}"/>
+
+
+
+            <StackPanel Grid.Row="0" Grid.Column="2" Grid.RowSpan="8">
+                    <Border Height="150" Width="auto" BorderThickness="3" BorderBrush="Black">
+                            <Viewbox>
+                                <Image Source="{Binding SelectedContact.Image, UpdateSourceTrigger=PropertyChanged}"/>
+                            </Viewbox>
+                    </Border>
+                 <Button Content="Bild auswählen"/>
+            </StackPanel>
+            
+        </Grid>
+        
+    </DockPanel>
+    
+</mahapps:MetroWindow>
